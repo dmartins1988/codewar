@@ -1,0 +1,30 @@
+ext {
+    libraries = [
+            // Google
+            supportVersion: "28.0.0",
+            constraintlayout: "1.1.3",
+            archComponents: "1.1.1",
+
+            // Dagger
+            dagger: "2.21",
+
+            // API
+            retrofit2: "2.5.0",
+            okhttp3Logging: "3.12.1",
+
+            // Reactive
+            rxJava: "2.2.6",
+            rxAndroid: "2.1.0",
+            rxKotlin: "2.3.0",
+            rxLifecycle: "2.2.1",
+
+            // Image
+            glide: "4.6.1",
+
+            // Logging
+            timber: "4.7.1",
+
+            // Room
+            room_version: "1.1.1"
+    ]
+}
