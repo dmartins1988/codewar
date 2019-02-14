@@ -12,8 +12,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layoutRes());
-        if(savedInstanceState == null)
-            getSupportFragmentManager().beginTransaction().add(R.id.screenContainer, new UserFragment()).commit();
+
+
     }
 
     @Override
