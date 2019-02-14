@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_completed_challenges"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/completed_challenges"/>
+
+    <item
+        android:id="@+id/navigation_authored_challenges"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/authored_challenges"/>
+
+</menu>
