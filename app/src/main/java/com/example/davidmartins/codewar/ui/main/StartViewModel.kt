@@ -5,7 +5,6 @@ import com.example.davidmartins.codewar.base.BaseViewModel
 import com.example.davidmartins.codewar.data.models.User
 import com.example.davidmartins.codewar.data.repositories.CodeWarRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -16,8 +15,6 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
     private val userLoadError = MutableLiveData<Boolean>()
     private val loading = MutableLiveData<Boolean>()
 
-    lateinit var compositeDisposable: CompositeDisposable
-
     private fun getUser(userName: String) {
         loading.value = true
         disposable.add(
@@ -25,9 +22,9 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<User>() {
-                            override fun onSuccess(t: User) {
+                            override fun onSuccess(user1: User) {
                                 userLoadError.value = false
-                                user.value = t
+                                user.value = user1
                                 loading.value = false
                             }
 
