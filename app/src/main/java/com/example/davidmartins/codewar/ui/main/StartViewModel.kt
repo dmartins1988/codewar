@@ -1,5 +1,6 @@
 package com.example.davidmartins.codewar.ui.main
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import com.example.davidmartins.codewar.base.BaseViewModel
 import com.example.davidmartins.codewar.data.models.User
@@ -15,7 +16,27 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
     private val userLoadError = MutableLiveData<Boolean>()
     private val loading = MutableLiveData<Boolean>()
 
-    private fun getUser(userName: String) {
+    private lateinit var userToSearch: String
+
+    internal fun getUser(): LiveData<User> {
+        return user
+    }
+
+    internal fun getError(): LiveData<Boolean> {
+        return userLoadError
+    }
+
+    internal fun getLoading(): LiveData<Boolean> {
+        return loading
+    }
+
+
+    fun searchUser(userName: String) {
+        userToSearch = userName
+        fetchUser(userToSearch)
+    }
+
+    private fun fetchUser(userName: String) {
         loading.value = true
         disposable.add(
                 codeWarRepository.getUserByName(userName)

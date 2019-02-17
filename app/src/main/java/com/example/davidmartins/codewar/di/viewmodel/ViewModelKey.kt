@@ -1,4 +1,4 @@
-package com.example.davidmartins.codewar.di.util
+package com.example.davidmartins.codewar.di.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey

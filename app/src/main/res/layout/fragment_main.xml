@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:orientation="vertical">
+                                             tools:context=".ui.main.StartFragment">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/app_toolbar"/>
-
-
-    <SearchView
+    <android.support.v7.widget.SearchView
         android:id="@+id/search_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/searched_use_textView">
+        app:layout_constraintBottom_toTopOf="@id/tv_search_user">
 
-    </SearchView>
+    </android.support.v7.widget.SearchView>
 
     <TextView
-        android:id="@+id/searched_use_textView"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_search_user"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="[Searched User]"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_user"
         app:layout_constraintBottom_toTopOf="@id/divider"
-        android:textSize="20sp"/>
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_user"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        tools:text="ERRO"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
 
     <View

@@ -1,4 +1,4 @@
-package com.example.davidmartins.codewar.util
+package com.example.davidmartins.codewar.di.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

@@ -1,34 +1,33 @@
-package com.example.davidmartins.codewar.di.modules
+package com.example.davidmartins.codewar.di.viewmodel
 
-import com.example.davidmartins.codewar.di.util.ViewModelKey
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import com.example.davidmartins.codewar.ui.details.DetailViewModel
 import com.example.davidmartins.codewar.ui.list.ListViewModel
 import com.example.davidmartins.codewar.ui.main.StartViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import javax.inject.Singleton
 
-
-@Singleton
 @Module
 abstract class ViewModelModule {
 
+    @Binds
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
     @ViewModelKey(StartViewModel::class)
-    abstract fun bindStartViewModel(viewModel: StartViewModel)
-
+    abstract fun bindStartViewModel(viewModel: StartViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(ListViewModel::class)
-    abstract fun bindListViewModel(viewModel: ListViewModel)
+    abstract fun bindLisiewModel(viewModel: ListViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
-    abstract fun bindDetailViewModel(viewModel: DetailViewModel)
+    abstract fun bindDEtailViewModel(viewModel: DetailViewModel): ViewModel
 
 }
