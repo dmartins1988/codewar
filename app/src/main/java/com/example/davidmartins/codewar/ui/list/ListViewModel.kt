@@ -2,16 +2,18 @@ package com.example.davidmartins.codewar.ui.list
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.example.davidmartins.codewar.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import com.example.davidmartins.codewar.data.models.*
 import com.example.davidmartins.codewar.data.repositories.CodeWarRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ListViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : BaseViewModel() {
+class ListViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : ViewModel() {
 
+    private var disposable = CompositeDisposable()
 
     private val completedChallenge = MutableLiveData<CompletedResponse>()
     private val authoredChallenge = MutableLiveData<AuthoredResponse>()
@@ -87,5 +89,9 @@ class ListViewModel @Inject constructor(private val codeWarRepository: CodeWarRe
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 
 }

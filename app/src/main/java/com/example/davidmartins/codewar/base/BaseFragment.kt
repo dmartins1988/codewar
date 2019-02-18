@@ -1,5 +1,6 @@
 package com.example.davidmartins.codewar.base
 
+import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +13,7 @@ import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-abstract class BaseFragment<T: BaseViewModel> : DaggerFragment() {
+abstract class BaseFragment<T: ViewModel> : DaggerFragment() {
 
     private var activity: AppCompatActivity? = null
 

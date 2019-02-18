@@ -2,15 +2,18 @@ package com.example.davidmartins.codewar.ui.main
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.example.davidmartins.codewar.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import com.example.davidmartins.codewar.data.models.User
 import com.example.davidmartins.codewar.data.repositories.CodeWarRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : BaseViewModel() {
+class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : ViewModel() {
+
+    private var disposable = CompositeDisposable()
 
     private val user = MutableLiveData<User>()
     private val userLoadError = MutableLiveData<Boolean>()
@@ -48,6 +51,11 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
                             }
                         }))
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
 
 }

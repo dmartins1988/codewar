@@ -2,18 +2,21 @@ package com.example.davidmartins.codewar.ui.details
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.example.davidmartins.codewar.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import com.example.davidmartins.codewar.data.models.Detail
 import com.example.davidmartins.codewar.data.repositories.CodeWarRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class DetailViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : BaseViewModel() {
+class DetailViewModel @Inject constructor(private val codeWarRepository: CodeWarRepository) : ViewModel() {
+
+
+    private var disposable = CompositeDisposable()
 
     private val detailChallenge = MutableLiveData<Detail>()
-
     private val loading = MutableLiveData<Boolean>()
     private val loadError = MutableLiveData<Boolean>()
 
@@ -45,5 +48,9 @@ class DetailViewModel @Inject constructor(private val codeWarRepository: CodeWar
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 
 }
