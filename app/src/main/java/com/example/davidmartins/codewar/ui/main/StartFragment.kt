@@ -38,7 +38,7 @@ class StartFragment : BaseFragment<StartViewModel>() {
         search_user.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(queryUser: String?): Boolean {
                 if (queryUser != null) {
-                    viewModel.searchUser(queryUser)
+                    viewModel.fetchUser(queryUser)
                     observeUserViewModel()
                 }
                 return false

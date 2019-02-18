@@ -24,6 +24,13 @@ class DetailsActivity : BaseActivity() {
 
         if (supportActionBar != null) {
             supportActionBar!!.title = "Main"
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            supportActionBar!!.setDisplayShowHomeEnabled(true)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

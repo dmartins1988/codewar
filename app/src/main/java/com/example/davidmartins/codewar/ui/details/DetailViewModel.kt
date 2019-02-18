@@ -1,5 +1,6 @@
 package com.example.davidmartins.codewar.ui.details
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import com.example.davidmartins.codewar.base.BaseViewModel
 import com.example.davidmartins.codewar.data.models.Detail
@@ -16,7 +17,13 @@ class DetailViewModel @Inject constructor(private val codeWarRepository: CodeWar
     private val loading = MutableLiveData<Boolean>()
     private val loadError = MutableLiveData<Boolean>()
 
-    private fun getDetail(id: String) {
+    internal fun getDetails() : LiveData<Detail> = detailChallenge
+
+    internal fun getError() : LiveData<Boolean> = loadError
+
+    internal fun getLoading() : LiveData<Boolean> = loading
+
+    fun getDetail(id: String) {
         loading.value = true
         disposable.add(
                 codeWarRepository.getChallengeDetailById(id)

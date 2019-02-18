@@ -8,10 +8,10 @@ import retrofit2.http.Path
 interface CodeWarApi {
 
     @GET("users/{user}/code-challenges/completed")
-    fun getCompletedByUser(@Path("user") user: String) : Single<Completed>
+    fun getCompletedByUser(@Path("user") user: String) : Single<CompletedResponse>
 
     @GET("users/{user}/code-challenges/authored")
-    fun getAuthoredByUser(@Path("user") user: String) : Single<Authored>
+    fun getAuthoredByUser(@Path("user") user: String) : Single<AuthoredResponse>
 
     @GET("users/{user}")
     fun getUser(@Path("user") user: String)  : Single<User>

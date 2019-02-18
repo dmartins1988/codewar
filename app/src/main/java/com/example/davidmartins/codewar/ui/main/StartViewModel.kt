@@ -16,8 +16,6 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
     private val userLoadError = MutableLiveData<Boolean>()
     private val loading = MutableLiveData<Boolean>()
 
-    private lateinit var userToSearch: String
-
     internal fun getUser(): LiveData<User> {
         return user
     }
@@ -31,12 +29,7 @@ class StartViewModel @Inject constructor(private val codeWarRepository: CodeWarR
     }
 
 
-    fun searchUser(userName: String) {
-        userToSearch = userName
-        fetchUser(userToSearch)
-    }
-
-    private fun fetchUser(userName: String) {
+    fun fetchUser(userName: String) {
         loading.value = true
         disposable.add(
                 codeWarRepository.getUserByName(userName)
